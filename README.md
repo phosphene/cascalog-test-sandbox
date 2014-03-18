@@ -1,7 +1,14 @@
-cascalog-test-sandbox
-=====================
+# cascalog_spec_sandbox
 
-Cascalog Test Driven Development Sandbox, Midje based
+A Clojure library designed to ... well, that part is up to you.
 
+## Usage
 
-First iteration pulls in some Lucene.
+FIXME
+
+## License
+
+Copyright © 2014 FIXME
+
+Distributed under the Eclipse Public License either version 1.0 or (at
+your option) any later version.
