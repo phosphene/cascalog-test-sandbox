@@ -1,4 +1,6 @@
-(ns cascalog-test-sandbox.core)
+(ns cascalog-test-sandbox.core
+(:use cascalog.api)
+(:require [cascalog.logic.ops :as c]))
 
 (defn foo
   "I don't do a whole lot."
@@ -15,3 +17,19 @@
   (if (nil? sequence)
     default
     (first sequence)))
+
+
+(defn mysubquery [datastore-path])
+
+
+;;; this sample function is from midje-cascalog testing docs 
+;;; https://github.com/nathanmarz/cascalog/tree/develop/midje-cascalog
+
+(defn max-followers-query [datastore-path]
+  (let [src (name-vars (mysubquery datastore-path)
+                       ["?user" "?follower-count"])]
+    (c/first-n src 1 :sort ["?follower-count"] :reverse true)))
+
+
+
+

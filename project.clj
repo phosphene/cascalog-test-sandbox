@@ -9,7 +9,8 @@
               [[speclj "2.5.0"] 
                [midje "1.6.3"]
                [org.apache.hadoop/hadoop-core "1.1.2"]
-               [cascalog/midje-cascalog "1.10.1"]] 
+               [cascalog/midje-cascalog "1.10.1"]
+               [lein-midje "3.1.1"]] 
               }
              }
   :plugins [[lein-midje "3.1.1"] [speclj "2.5.0"]]
