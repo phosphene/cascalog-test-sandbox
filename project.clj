@@ -7,13 +7,13 @@
   :profiles {:dev 
              {:dependencies 
               [[speclj "2.5.0"] 
-               [midje "1.6.3"]
+               [midje "1.6.0"]
                [org.apache.hadoop/hadoop-core "1.1.2"]
-               [cascalog/midje-cascalog "1.10.1"]
-               [lein-midje "3.1.1"]] 
+               [cascalog/midje-cascalog "2.0.0"]
+               [lein-midje "3.1.3"]] 
               }
              }
-  :plugins [[lein-midje "3.1.1"] [speclj "2.5.0"]]
+  :plugins [[lein-midje "3.1.3"] [speclj "2.5.0"]]
   :test-paths ["test/"]
   :repositories {"conjars" "http://conjars.org/repo"}
   :jvm-opts ["-Xms768m" "-Xmx768m"]
