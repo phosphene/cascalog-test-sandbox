@@ -23,24 +23,3 @@ foo
 exit
 (use 'midje.repl)
 (autotest)
-(use 'midje.repl)
-(autotest)
-(use 'midje.repl)
-(autotest)
-(use 'midje.repl)
-(autotest)
-quit
-(autotest)
-(use 'midje.repl)
-(autotest)
-exit
-(use 'midje.repl)
-(autotest)
-(defn mysubquery [datastore-path]
-  )
-(autotest)
-(pst *me)
-(autotest)
-quit
-(use 'midje.repl)
-(autotest)
