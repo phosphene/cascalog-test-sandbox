@@ -39,6 +39,10 @@
    ["this" 2]
    ["with" 1]])
 
+
+
+;; the fact?<- idiom has been deprecated
+;; therefore this test no long passes
 ;; when =wc-query= is called with =:text-path=
 ;; it will produce =short-sentences=,
 ;; provided =(hfs-textline :text-path)= produces =short-wordcounts=.
