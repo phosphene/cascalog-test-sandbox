@@ -46,7 +46,6 @@
 ;; when =wc-query= is called with =:text-path=
 ;; it will produce =short-sentences=,
 ;; provided =(hfs-textline :text-path)= produces =short-wordcounts=.
-(fact "hmmm"  
-short-wordcounts (wc-query :text-path)
+(fact "hmmm" (wc-query :text-path) => short-sentences
         (provided
           (hfs-textline :text-path) => short-sentences)) ;; true
