@@ -24,5 +24,5 @@
 
 (facts
   query => (produces-suffix [[5 11]])        ;; true
-  query => (produces-suffix [[5 11]] :info)) ;; true
+  query => (produces-prefix [[1 5]])) ;; true
 
