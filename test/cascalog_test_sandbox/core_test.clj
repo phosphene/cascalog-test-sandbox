@@ -26,3 +26,23 @@
   query => (produces-suffix [[5 11]])        ;; true
   query => (produces-prefix [[1 5]])) ;; true
 
+
+(def short-sentences
+  [["this is a sentence sentence"]
+   ["sentence with this is repeated"]])
+
+(def short-wordcounts
+  [["sentence" 3]
+   ["repeated" 1]
+   ["is" 2]
+   ["a" 1]
+   ["this" 2]
+   ["with" 1]])
+
+;; when =wc-query= is called with =:text-path=
+;; it will produce =short-sentences=,
+;; provided =(hfs-textline :text-path)= produces =short-wordcounts=.
+(fact "hmmm"  
+short-wordcounts (wc-query :text-path)
+        (provided
+          (hfs-textline :text-path) => short-sentences)) ;; true
