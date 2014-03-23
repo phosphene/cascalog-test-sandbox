@@ -1,6 +1,8 @@
 (ns cascalog-test-sandbox.core
 (:use cascalog.api)
-(:require [cascalog.logic.ops :as c]))
+(:require [cascalog.logic.ops :as c])
+(:require [cascalog.logic.def :as def])
+)
 
 (defn foo
   "I don't do a whole lot."
@@ -48,7 +50,7 @@
 
 ;;;word count example below frm http://sritchie.github.io/2011/09/30/testing-cascalog-with-midje/
 
-(defmapcatop split
+(def/defmapcatfn split
   "Accepts a sentence 1-tuple, splits that sentence on whitespace, and
   emits a single 1-tuple for each word."
   [^String sentence]

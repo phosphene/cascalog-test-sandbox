@@ -58,14 +58,14 @@
   (fact  (split sentence) => words))
 
 
-
-
 (let [counts [["word" 1] ["another" 2]]]
   (fact (wc-query :path) => counts
         (provided
          (hfs-textline :path) => [["another another word"]]))) ;; true
 
-
+(fact "split should produce a vector of substrings"
+      (let [result (split "this is a sentence")]
+       result => ["this" "is" "a" "sentence"]))
 
 
 
