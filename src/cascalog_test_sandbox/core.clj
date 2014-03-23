@@ -46,7 +46,7 @@
       (:sort ?x)
       (c/sum ?y :> ?sum)))
 
-;;;word count example below from http://sritchie.github.io/2011/09/30/testing-cascalog-with-midje/
+;;;word count example below frm http://sritchie.github.io/2011/09/30/testing-cascalog-with-midje/
 
 (defmapcatop split
   "Accepts a sentence 1-tuple, splits that sentence on whitespace, and

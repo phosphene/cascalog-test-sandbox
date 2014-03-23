@@ -40,12 +40,34 @@
    ["with" 1]])
 
 
-
 ;; the fact?<- idiom has been deprecated
 ;; therefore this test no long passes
 ;; when =wc-query= is called with =:text-path=
 ;; it will produce =short-sentences=,
 ;; provided =(hfs-textline :text-path)= produces =short-wordcounts=.
 (fact "hmmm" (wc-query :text-path) => short-sentences
+      (provided
+       (hfs-textline :text-path) => short-wordcounts)) ;; true
+
+
+(fact "huh?" (wc-query :text-path) => short-sentences)
+
+
+(let [sentence [["two words"]]
+      words    [["two"] ["words"]]]
+  (fact  (split sentence) => words))
+
+
+
+
+(let [counts [["word" 1] ["another" 2]]]
+  (fact (wc-query :path) => counts
         (provided
-          (hfs-textline :text-path) => short-sentences)) ;; true
+         (hfs-textline :path) => [["another another word"]]))) ;; true
+
+
+
+
+
+
+
