@@ -17,5 +17,6 @@
   :test-paths ["test/"]
   :repositories {"conjars" "http://conjars.org/repo"}
   :jvm-opts ["-Xms768m" "-Xmx768m"]
+  :main cascalog-test-sandbox.core
   
   )
