@@ -63,9 +63,14 @@
         (provided
          (hfs-textline :path) => [["another another word"]]))) ;; true
 
-(fact "split should produce a vector of substrings"
+
+;;; if the split function should break outside of a cascalog query
+;;; then why does this work?
+(fact "split should produce a charsequence of substrings"
       (let [result (split "this is a sentence")]
        result => ["this" "is" "a" "sentence"]))
+
+
 
 
 

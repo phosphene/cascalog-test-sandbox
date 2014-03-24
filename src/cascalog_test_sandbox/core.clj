@@ -50,11 +50,16 @@
 
 ;;;word count example below frm http://sritchie.github.io/2011/09/30/testing-cascalog-with-midje/
 
+(def/defmapcatfn tokenise [line]
+  "reads in a line of string and splits it by a regular expression"
+  (clojure.string/split line #"[\[\]\\\(\),.)\s]+"))
+
+
 (def/defmapcatfn split
   "Accepts a sentence 1-tuple, splits that sentence on whitespace, and
   emits a single 1-tuple for each word."
   [^String sentence]
-  (seq (.split sentence "\\s+")))
+  (seq (clojure.string/split sentence #"\s+")))
 
 (defn wc-query
   "Returns a subquery that generates counts for every word in
