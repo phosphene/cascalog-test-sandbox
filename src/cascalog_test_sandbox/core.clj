@@ -1,28 +1,14 @@
 (ns cascalog-test-sandbox.core
-(:use cascalog.api)
-(:require [cascalog.logic.ops :as c])
-(:require [cascalog.logic.def :as def])
-)
-
-(defn foo
-  "I don't do a whole lot."
-  [x]
-  (println x "Hello, World!"))
+  (:use [cascalog.api]
+        [cascalog.more-taps :only (hfs-delimited)])
+  (:require [cascalog.logic.ops :as c]
+            [cascalog.logic.def :as def]
+            [clojure.string :as s])
+  (:gen-class))
 
 
-;;; This is an incorrect implementation, such as might be written by
-;;; someone who was used to a Lisp in which an empty list is equal to
-;;; nil.
-
-
-(defn first-element [sequence default]
-  (if (nil? sequence)
-    default
-    (first sequence)))
-
-
+;;placeholder function
 (defn mysubquery [datastore-path])
-
 
 ;;; this sample function is from midje-cascalog testing docs 
 ;;; https://github.com/nathanmarz/cascalog/tree/develop/midje-cascalog
