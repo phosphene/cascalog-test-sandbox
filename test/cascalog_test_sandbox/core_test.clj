@@ -43,32 +43,32 @@
 ;; the fact?<- idiom has been deprecated
 ;; therefore this test no long passes
 ;; when =wc-query= is called with =:text-path=
-;; it will produce =short-sentences=,
-;; provided =(hfs-textline :text-path)= produces =short-wordcounts=.
-(fact "hmmm" (wc-query :text-path) => short-sentences
-      (provided
-       (hfs-textline :text-path) => short-wordcounts)) ;; true
+;; it will produce =short-wordcounts=,
+;; provided =(hfs-textline :text-path)= produces =short-sentences=.
+;;(fact "hmmm" (wc-query :text-path) => short-wordcounts
+;;      (provided
+;;       (hfs-textline :text-path) => short-sentences)) ;; true
 
 
-(fact "huh?" (wc-query :text-path) => short-sentences)
+;;(fact "huh?" (wc-query :text-path) => short-sentences)
 
 
-(let [sentence [["two words"]]
-      words    [["two"] ["words"]]]
-  (fact  (split sentence) => words))
+;;(let [sentence [["two words"]]
+;;      words    [["two"] ["words"]]]
+;;  (fact  (split sentence) => words))
 
 
-(let [counts [["word" 1] ["another" 2]]]
-  (fact (wc-query :path) => counts
-        (provided
-         (hfs-textline :path) => [["another another word"]]))) ;; true
+;;(let [counts [["word" 1] ["another" 2]]]
+;;  (fact (wc-query :path) => counts
+;;        (provided
+;;         (hfs-textline :path) => [["another another word"]]))) ;; true
 
 
 ;;; if the split function should break outside of a cascalog query
 ;;; then why does this work?
-(fact "split should produce a charsequence of substrings"
-      (let [result (split "this is a sentence")]
-       result => ["this" "is" "a" "sentence"]))
+;;(fact "split should produce a charsequence of substrings"
+ ;;     (let [result (split "this is a sentence")]
+ ;;      result => ["this" "is" "a" "sentence"]))
 
 
 
