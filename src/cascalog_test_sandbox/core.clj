@@ -1,8 +1,10 @@
 (ns cascalog-test-sandbox.core
   (:use [cascalog.api]
-        [cascalog.more-taps :only (hfs-delimited)])
+        [cascalog.more-taps :only (hfs-delimited)]
+        [cascalog.checkpoint])
   (:require [cascalog.logic.ops :as c]
             [cascalog.logic.def :as def]
+            [cascalog.logic.vars :as v]
             [clojure.string :as s])
   )
 
@@ -38,7 +40,11 @@
 
 (def/defmapcatfn tokenise [line]
   "reads in a line of string and splits it by a regular expression"
-  (clojure.string/split line #"[\[\]\\\(\),.)\s]+"))
+  (s/split line #"[\[\]\\\(\),.)\s]+"))
+
+(def/defmapcatfn split [line]
+  "reads in a line of string and splits it by regex"
+  (s/split line #"[\[\]\\\(\),.)\s]+"))
 
 
 ;; (def/defmapcatfn split
@@ -63,10 +69,6 @@
  ;; (?- (hfs-textline results-path)
  ;;     (wc-query text-path)))
 
-
-(def/defmapcatop split [line]
-  "reads in a line of string and splits it by regex"
-  (s/split line #"[\[\]\\\(\),.)\s]+"))
 
 (defn scrub-text [s]
   "trim open whitespaces and lower case"

@@ -3,7 +3,7 @@
   :url "http://example.com/FIXME"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :dependencies [[org.clojure/clojure "1.5.1"] [cascalog/cascalog-core "2.0.0"] [cascalog/cascalog-more-taps "2.0.0"]]
+  :dependencies [[org.clojure/clojure "1.5.1"] [cascalog/cascalog-core "2.0.0"] [cascalog/cascalog-more-taps "2.0.0"] [cascalog/cascalog-checkpoint "2.0.0"]]
   :profiles {:dev 
              {:dependencies 
               [[speclj "2.5.0"] 
