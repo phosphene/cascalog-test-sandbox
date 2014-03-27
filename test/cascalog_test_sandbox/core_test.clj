@@ -39,7 +39,6 @@
    ["this" 2]
    ["with" 1]])
 
-
 ;; the fact?<- idiom has been deprecated
 ;; therefore this test no long passes
 ;; when =wc-query= is called with =:text-path=
@@ -69,6 +68,20 @@
 ;;(fact "split should produce a charsequence of substrings"
  ;;     (let [result (split "this is a sentence")]
  ;;      result => ["this" "is" "a" "sentence"]))
+
+
+
+
+(fact (scrub-text "FoO BAR ") => "foo bar")
+
+
+(let [rain [["doc1" "a b c"]]
+      stop [["b"]]]
+  (fact
+   (etl-docs-gen rain stop) => (produces [["doc1" "a"]
+                                          ["doc1" "c"]])))
+
+
 
 
 
