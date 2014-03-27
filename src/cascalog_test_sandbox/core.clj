@@ -42,6 +42,8 @@
   "reads in a line of string and splits it by a regular expression"
   (s/split line #"[\[\]\\\(\),.)\s]+"))
 
+;;same function same regex
+;;this is a repeat
 (def/defmapcatfn split [line]
   "reads in a line of string and splits it by regex"
   (s/split line #"[\[\]\\\(\),.)\s]+"))
@@ -52,6 +54,8 @@
 ;;   emits a single 1-tuple for each word."
 ;;   [^String sentence]
 ;;   (seq (clojure.string/split sentence #"\s+")))
+
+;; example query
 
 (defn wc-query
   "Returns a subquery that generates counts for every word in
@@ -97,19 +101,13 @@
       (src _ ?word)
       (c/count ?count)))
 
-
-
-
+;;split and word count
 (defn word-count-split [src]
-  "simple word count across all documents"
+  "word count and split each line in tuples"
   (<- [?word ?count]
       (src ?line)
       (tokenise ?line :> ?word)
       (c/count ?count)))
-
-
-
-
 
 
 (defn D [src]
