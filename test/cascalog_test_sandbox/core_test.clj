@@ -39,6 +39,14 @@
    ["this" 2]
    ["with" 1]])
 
+
+(fact (word-count-split short-sentences) => (produces short-wordcounts))
+;;        (provided
+;;         (hfs-textline :path) => [["another another word"]]))) ;; true
+
+
+
+
 ;; the fact?<- idiom has been deprecated
 ;; therefore this test no long passes
 ;; when =wc-query= is called with =:text-path=
@@ -80,9 +88,6 @@
   (fact
    (etl-docs-gen rain stop) => (produces [["doc1" "a"]
                                           ["doc1" "c"]])))
-
-
-
 
 
 

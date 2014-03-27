@@ -97,6 +97,21 @@
       (src _ ?word)
       (c/count ?count)))
 
+
+
+
+(defn word-count-split [src]
+  "simple word count across all documents"
+  (<- [?word ?count]
+      (src ?line)
+      (tokenise ?line :> ?word)
+      (c/count ?count)))
+
+
+
+
+
+
 (defn D [src]
   (let [src (select-fields src ["?doc-id"])]
     (<- [?n-docs]
