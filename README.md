@@ -1,4 +1,4 @@
-# cascalog_spec_sandbox
+# cascalog_test_sandbox
 
 A Clojure library designed to test drive the development of cascalog applications.
 
@@ -12,6 +12,7 @@ leiningen must be installed
 $ lein repl
 
 cascalog-test-sandbox.core=> (use 'midje.repl)
+
 cascalog-test-sandbox.core=> (autotest)
 
 tests will run on any change in files
