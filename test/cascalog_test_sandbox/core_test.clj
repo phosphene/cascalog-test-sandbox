@@ -42,7 +42,7 @@
 
 (fact (word-count-split short-sentences) => (produces short-wordcounts))
 
-(fact (word-count short-sentences) => (produces short-wordcounts))
+;;(fact (word-count short-sentences) => (produces short-wordcounts))
 
 ;;        (provided
 ;;         (hfs-textline :path) => [["another another word"]]))) ;; true
