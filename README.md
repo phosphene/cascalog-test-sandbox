@@ -1,4 +1,4 @@
-# cascalog_test_sandbox
+# cascalog-test-sandbox
 
 A Clojure library designed to test drive the development of cascalog applications.
 
