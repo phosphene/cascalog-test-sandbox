@@ -94,6 +94,10 @@
 
 
 
+(def short-sentences
+  [["this is a sentence sentence"]
+   ["sentence with this is repeated"]])
 
 
+(fact (tokenize-strings short-sentences "outpath") => (produces [["test"]])) 
 
