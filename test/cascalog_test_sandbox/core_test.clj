@@ -5,12 +5,13 @@
         [midje sweet cascalog])
 )
 
-  (fact "Query should return a single tuple containing
+(fact "Query should return a single tuple containing
            [most-popular-user, follower-count]."
-          (max-followers-query :path) => (produces [["richhickey" 2961]])
-          (provided
-            (mysubquery :path) => [["sritchie09" 180]
-                                         ["richhickey" 2961]]))
+      (max-followers-query :path) => (produces [["richhickey" 2961]])
+      (provided
+       (mysubquery :path) => [["sritchie09" 180]
+                              ["richhickey" 2961]]))
+
 (facts "query produces 2-tuples from src defined in core.clj"
   query => (produces [[3 10] [1 5] [5 11]])  ;; true
   query => (produces [[1 5] [3 10] [5 11]])) ;; true
@@ -55,12 +56,12 @@
 ;; when =wc-query= is called with =:text-path=
 ;; it will produce =short-wordcounts=,
 ;; provided =(hfs-textline :text-path)= produces =short-sentences=.
-;;(fact "hmmm" (wc-query :text-path) => short-wordcounts
+;;(fact "hmmm" (wc-query :text-path) => (produces short-wordcounts)
 ;;      (provided
-;;       (hfs-textline :text-path) => short-sentences)) ;; true
+;;       (hfs-textline :text-path) => (produces short-sentences))) ;; true
 
 
-;;(fact "huh?" (wc-query :text-path) => short-sentences)
+;;(fact "huh?" (wc-query :text-path) => (produces short-sentences))
 
 
 ;;(let [sentence [["two words"]]
@@ -68,10 +69,10 @@
 ;;  (fact  (split sentence) => words))
 
 
-;;(let [counts [["word" 1] ["another" 2]]]
-;;  (fact (wc-query :path) => counts
-;;        (provided
-;;         (hfs-textline :path) => [["another another word"]]))) ;; true
+(let [counts [["word" 1] ["another" 2]]]
+  (fact (wc-query :path) => (produces counts)
+        (provided
+         (hfs-textline :path) => [["another another word"]]))) ;; true
 
 
 ;;; if the split function should break outside of a cascalog query
@@ -94,10 +95,22 @@
 
 
 
-(def short-sentences
-  [["this is a sentence sentence"]
-   ["sentence with this is repeated"]])
+;;(def short-sentences
+;;  [["this is a sentence sentence"]
+;;   ["sentence with this is repeated"]])
 
 
-(fact (tokenize-strings short-sentences "outpath") => (produces [["test"]])) 
+;;(fact (tokenize-strings short-sentences "outpath") => (produces [["test"]])) 
+
+
+
+;;(fact "Query should tokenize strings"
+;;      (tokenize-strings :inpath :outpath) => (produces [["richhickey"]])
+;;      (provided
+;;       (mysubquery :path) => [["sritchie09" 180]
+;;                              ["richhickey" 2961]]))
+
+
+
+
 
