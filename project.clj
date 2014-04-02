@@ -4,10 +4,11 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.5.1"] 
-[cascalog/cascalog-core "2.0.0"] 
-[cascalog/cascalog-more-taps "2.0.0"] 
-[cascalog/cascalog-checkpoint "2.0.0"]
-[org.apache.lucene/lucene-core "4.7.0"]]
+                 [cascalog/cascalog-core "2.0.0"] 
+                 [cascalog/cascalog-more-taps "2.0.0"] 
+                 [cascalog/cascalog-checkpoint "2.0.0"]
+                 [org.apache.lucene/lucene-core "4.7.0"]
+                 [org.apache.lucene/lucene-analyzers-common "4.7.0"]]
   :profiles {:dev 
              {:dependencies 
               [[speclj "2.5.0"] 
