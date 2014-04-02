@@ -75,6 +75,11 @@
          (hfs-textline :path) => [["another another word"]]))) ;; true
 
 
+
+
+
+
+
 ;;; if the split function should break outside of a cascalog query
 ;;; then why does this work?
 ;;(fact "split should produce a charsequence of substrings"
@@ -104,11 +109,11 @@
 
 
 
-;;(fact "Query should tokenize strings"
-;;      (tokenize-strings :inpath :outpath) => (produces [["richhickey"]])
-;;      (provided
-;;       (mysubquery :path) => [["sritchie09" 180]
-;;                              ["richhickey" 2961]]))
+
+
+(fact "Query should tokenize strings"
+      (tokenize-string short-sentences) => nil )
+      
 
 
 
