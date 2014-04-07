@@ -190,7 +190,7 @@
   ([] (load-analyzer StandardAnalyzer/STOP_WORDS_SET))
   ([analyzer text]
      (emit-tokens (tokenize-text analyzer text)))
-  ([analyzer] nil))
+   ([analyzer] nil))
 
 (defn tokenize-strings [in-path out-path]
   (let [src (hfs-textline in-path)]

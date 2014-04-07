@@ -110,9 +110,6 @@
 
 
 
-
-(fact "Query should tokenize strings"
-      (tokenize-string short-sentences) => nil )
       
 
 
