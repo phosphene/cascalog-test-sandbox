@@ -4,6 +4,10 @@ A Clojure library designed to test drive the development of cascalog application
 
 This sandbox uses midje-cascalog and its idioms to test drive the development of Hadoop/cascalog/cascading jobs.
 
+Examples include use of Lucene classes
+
+Mahout is included in the project. implementation and testing of Mahout coming soon.... 
+
 
 ## Usage
 
