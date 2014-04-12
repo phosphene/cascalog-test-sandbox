@@ -7,10 +7,14 @@
             [cascalog.logic.vars :as v]
             [clojure.string :as s])
   (:import
-   org.apache.lucene.analysis.standard.StandardAnalyzer
-   org.apache.lucene.analysis.TokenStream
-   org.apache.lucene.util.Version
-   org.apache.lucene.analysis.tokenattributes.CharTermAttribute)
+   [org.apache.lucene.analysis.standard.StandardAnalyzer]
+   [org.apache.lucene.analysis.TokenStream]
+   [org.apache.lucene.util.Version]
+   [org.apache.lucene.analysis.tokenattributes.CharTermAttribute]
+   [org.apache.mahout.cf.taste.impl.model.file FileDataModel]
+   [org.apache.mahout.cf.taste.impl.similarity PearsonCorrelationSimilarity]
+   [org.apache.mahout.cf.taste.impl.recommender GenericUserBasedRecommender]
+   [org.apache.mahout.cf.taste.impl.neighborhood NearestNUserNeighborhood])
   )
 
 
