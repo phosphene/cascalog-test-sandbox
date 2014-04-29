@@ -1,15 +1,16 @@
 (ns cascalog-test-sandbox.core-test
-  
   (:use [cascalog-test-sandbox.core]
         [cascalog.api]
         [midje sweet cascalog])
 )
 
+;;sample test
+
 (fact "Query should return a single tuple containing
            [most-popular-user, follower-count]."
       (max-followers-query :path) => (produces [["richhickey" 2961]])
       (provided
-       (mysubquery :path) => [["sritchie09" 180]
+      (mysubquery :path) => [["sritchie09" 180]
                               ["richhickey" 2961]]))
 
 (facts "query produces 2-tuples from src defined in core.clj"
@@ -24,33 +25,29 @@
 
 
 (facts
-  query => (produces-suffix [[5 11]])        ;; true
+  query => (produces-suffix [[5 11]]) ;; true
   query => (produces-prefix [[1 5]])) ;; true
 
-
-(def short-sentences
-  [["this is a sentence sentence"]
-   ["sentence with this is repeated"]])
-
-(def short-wordcounts
-  [["sentence" 3]
-   ["repeated" 1]
-   ["is" 2]
-   ["a" 1]
-   ["this" 2]
-   ["with" 1]])
+;; this is a test of the canonical cascading word-count example
+;; we create our test data using the let syntax, which intergrates nicely
+;; with midje
 
 
-(fact (word-count-split short-sentences) => (produces short-wordcounts))
+(let [short-sentences
+      [["this is a sentence sentence"]
+       ["sentence with this is repeated"]]
+      short-wordcounts
+      [["sentence" 3]
+       ["repeated" 1]
+       ["is" 2]
+       ["a" 1]
+       ["this" 2]
+       ["with" 1]]]
+  (fact (word-count-split short-sentences) => (produces short-wordcounts)))
 
-;;(fact (word-count short-sentences) => (produces short-wordcounts))
 
-;;        (provided
-;;         (hfs-textline :path) => [["another another word"]]))) ;; true
-
-
-
-
+;;; this note concerns the deprecation of syntax
+;;; we have kept this here as documentation and notice
 ;; the fact?<- idiom has been deprecated
 ;; therefore this test no long passes
 ;; when =wc-query= is called with =:text-path=
@@ -61,13 +58,7 @@
 ;;       (hfs-textline :text-path) => (produces short-sentences))) ;; true
 
 
-;;(fact "huh?" (wc-query :text-path) => (produces short-sentences))
-
-
-;;(let [sentence [["two words"]]
-;;      words    [["two"] ["words"]]]
-;;  (fact  (split sentence) => words))
-
+;; this test uses the provided affordance to abstract away what is *not* tested
 
 (let [counts [["word" 1] ["another" 2]]]
   (fact (wc-query :path) => (produces counts)
@@ -76,18 +67,7 @@
 
 
 
-
-
-
-
-;;; if the split function should break outside of a cascalog query
-;;; then why does this work?
-;;(fact "split should produce a charsequence of substrings"
- ;;     (let [result (split "this is a sentence")]
- ;;      result => ["this" "is" "a" "sentence"]))
-
-
-
+;; these tests are for etl-docs-gen
 
 (fact (scrub-text "FoO BAR ") => "foo bar")
 
@@ -98,19 +78,6 @@
    (etl-docs-gen rain stop) => (produces [["doc1" "a"]
                                           ["doc1" "c"]])))
 
-
-
-;;(def short-sentences
-;;  [["this is a sentence sentence"]
-;;   ["sentence with this is repeated"]])
-
-
-;;(fact (tokenize-strings short-sentences "outpath") => (produces [["test"]])) 
-
-
-
-
-      
 
 
 
