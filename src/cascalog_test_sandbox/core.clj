@@ -24,7 +24,8 @@
    [org.apache.mahout.common RandomUtils])
   )
 
-
+;; we have imported more than we are currently using
+;; the thought is to eventually test some use of all these libraries
 
 ;;placeholder function
 (defn mysubquery [datastore-path])
@@ -55,6 +56,7 @@
 
 ;;;word count example below frm http://sritchie.github.io/2011/09/30/testing-cascalog-with-midje/
 
+;;latest cascalog api
 (def/defmapcatfn tokenise [line]
   "reads in a line of string and splits it by a regular expression"
   (s/split line #"[\[\]\\\(\),.)\s]+"))
@@ -66,14 +68,6 @@
   (s/split line #"[\[\]\\\(\),.)\s]+"))
 
 
-;; (def/defmapcatfn split
-;;   "Accepts a sentence 1-tuple, splits that sentence on whitespace, and
-;;   emits a single 1-tuple for each word."
-;;   [^String sentence]
-;;   (seq (clojure.string/split sentence #"\s+")))
-
-;; example query
-
 (defn wc-query
   "Returns a subquery that generates counts for every word in
     the text-files located at `text-path`."
@@ -83,13 +77,6 @@
         (src ?textline)
         (split ?textline :> ?word)
         (c/count ?count))))
-
-;;(defn -main
-  
- ;;; [text-path results-path]
- ;; (?- (hfs-textline results-path)
- ;;     (wc-query text-path)))
-
 
 (defn scrub-text [s]
   "trim open whitespaces and lower case"
@@ -212,50 +199,3 @@
          (tokenize-string !line :> ?token)
          (:distinct false))))
 
-
-;; this is from 
-;; https://github.com/gmwils/mahoutinaction/
-;; Chapter 2.2 Running a first recommender engine
-;; (recommend "resources/intro.csv")
-
-
-(defn recommend [file]
-  (let [model (FileDataModel. (File. file))
-       similarity (PearsonCorrelationSimilarity. model)
-       neighborhood (NearestNUserNeighborhood. 2 similarity model)
-       recommender (GenericUserBasedRecommender. model neighborhood
-                                                  similarity)]
-    (.recommend recommender 1 1)))
-
-; Chapter 2.3 Evaluating a Recommender
-(defn evaluator [file]
-  (let [_ (RandomUtils/useTestSeed)
-        file-model (FileDataModel. (File. file))
-        evaluator (AverageAbsoluteDifferenceRecommenderEvaluator.)
-        ;; evaluator (RMSRecommenderEvaluator.)
-        builder (reify RecommenderBuilder
-                  (buildRecommender [_this model]
-                    (let [similarity (PearsonCorrelationSimilarity. model)
-                          neighborhood (NearestNUserNeighborhood. 2 similarity model)
-                          recommender (GenericUserBasedRecommender. model
-                                                                     neighborhood
-                                                                     similarity)]
-                                              recommender)))]
-    (.evaluate evaluator builder nil file-model 0.7 1.0)))
-
-;; 2.4 Precision & Recall
-(defn precision [file]
-  (let [_ (RandomUtils/useTestSeed)
-        file-model (FileDataModel. (File. file))
-        evaluator (GenericRecommenderIRStatsEvaluator.)
-        builder (reify RecommenderBuilder
-                  (buildRecommender [_this model]
-                    (let [similarity (PearsonCorrelationSimilarity. model)
-                          neighborhood (NearestNUserNeighborhood. 2 similarity model)
-                          recommender (GenericUserBasedRecommender. model
-                                                                    neighborhood
-                                                                    similarity)]
-                      recommender)))]
-    (.evaluate evaluator builder nil file-model nil 2
-               GenericRecommenderIRStatsEvaluator/CHOOSE_THRESHOLD
-               1.0)))
