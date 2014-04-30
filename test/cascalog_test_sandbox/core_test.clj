@@ -29,7 +29,7 @@
   query => (produces-prefix [[1 5]])) ;; true
 
 ;; this is a test of the canonical cascading word-count example
-;; we create our test data using the let syntax, which intergrates nicely
+;; we create our test data using the let syntax, which integrates nicely
 ;; with midje
 
 
