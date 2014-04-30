@@ -33,16 +33,8 @@
 ;; with midje
 
 
-(let [short-sentences
-      [["this is a sentence sentence"]
-       ["sentence with this is repeated"]]
-      short-wordcounts
-      [["sentence" 3]
-       ["repeated" 1]
-       ["is" 2]
-       ["a" 1]
-       ["this" 2]
-       ["with" 1]]]
+(let [short-sentences [["this is a sentence sentence"]["sentence with this is repeated"]]
+      short-wordcounts [["sentence" 3]["repeated" 1]["is" 2]["a" 1]["this" 2]["with" 1]]]
   (fact (word-count-split short-sentences) => (produces short-wordcounts)))
 
 
@@ -58,7 +50,7 @@
 ;;       (hfs-textline :text-path) => (produces short-sentences))) ;; true
 
 
-;; this test uses the provided affordance to abstract away what is *not* tested
+;; this test uses the "provided" affordance to abstract away what is *not* tested
 
 (let [counts [["word" 1] ["another" 2]]]
   (fact (wc-query :path) => (produces counts)
